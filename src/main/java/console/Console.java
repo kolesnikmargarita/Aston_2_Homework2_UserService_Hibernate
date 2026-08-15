@@ -4,7 +4,6 @@ import controller.UserController;
 import dto.*;
 import exception.*;
 
-import java.util.Scanner;
 
 public class Console {
 

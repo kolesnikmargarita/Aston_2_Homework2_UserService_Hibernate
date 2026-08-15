@@ -1,6 +1,5 @@
 package validate;
 
-import exception.EmptyDataException;
 
 public class DataValidator {
 
