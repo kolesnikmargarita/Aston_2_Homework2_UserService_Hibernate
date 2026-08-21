@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 @Entity
 @Table(name = "users")
@@ -70,5 +71,22 @@ public class User {
     @Override
     public String toString() {
         return "\nUser id: " + id + "\nName: " + name + "\nemail: " + email + "\nAge: " + age + "\nCreated at  " + created_at;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return Objects.equals(id, user.id) &&
+                Objects.equals(name, user.name) &&
+                Objects.equals(email, user.email) &&
+                Objects.equals(age, user.age) &&
+                Objects.equals(created_at, user.created_at);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, email, age, created_at);
     }
 }

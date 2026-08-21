@@ -13,12 +13,19 @@ import java.util.List;
 
 public class UserService implements UserServiceInterface {
 
-    private final UserMapper userMapper = new UserMapper();
+    private final UserMapper userMapper;
     private final UserRepository userRepository;
     private static final Logger log = LoggerFactory.getLogger(UserService.class);
 
     public UserService(SessionFactory sessionFactory) {
         userRepository = new UserRepository(sessionFactory);
+        userMapper = new UserMapper();
+    }
+
+    // Конструктор для тестов
+    public UserService(UserRepository userRepository, UserMapper userMapper) {
+        this.userRepository = userRepository;
+        this.userMapper = userMapper;
     }
 
     @Override
