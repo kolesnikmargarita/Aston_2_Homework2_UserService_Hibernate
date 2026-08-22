@@ -45,9 +45,7 @@ class UserRepositoryTest {
     @BeforeEach
     void setUp() {
         userRepository = new UserRepository(sessionFactory);
-        sessionFactory.inTransaction(session -> {
-            session.createMutationQuery("DELETE FROM User").executeUpdate();
-        });
+        sessionFactory.inTransaction(session -> session.createMutationQuery("DELETE FROM User").executeUpdate());
     }
 
     @Test
